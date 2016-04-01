@@ -38,7 +38,7 @@ class EnqueueJobsForSubscriptionsMessageSent
 
     return {
       metadata:
-        jobType: 'DeliverSubscriptionMessageReceived'
+        jobType: 'DeliverSubscriptionMessageSent'
         auth:
           uuid: subscription.emitterUuid
         fromUuid: subscription.emitterUuid

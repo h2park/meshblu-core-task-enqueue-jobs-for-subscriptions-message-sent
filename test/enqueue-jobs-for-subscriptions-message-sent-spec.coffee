@@ -86,16 +86,16 @@ describe 'EnqueueJobsForSubscriptionsMessageSent', ->
             return done error if error?
             expect(request).to.deep.equal {
               metadata:
-                jobType: 'DeliverSubscriptionMessageReceived'
+                jobType: 'DeliverSubscriptionMessageSent'
                 auth:
                   uuid: 'emitter-uuid'
                 fromUuid: 'emitter-uuid'
                 toUuid: 'subscriber-uuid'
                 messageRoute: [
                  {
-                   "fromUuid": "emitter-uuid"
-                   "toUuid": "subscriber-uuid"
-                   "type": "message.received"
+                   fromUuid: "emitter-uuid"
+                   toUuid: "subscriber-uuid"
+                   type: "message.received"
                  }
                ]
               rawData: '{"original":"message"}'
@@ -132,7 +132,7 @@ describe 'EnqueueJobsForSubscriptionsMessageSent', ->
             return done error if error?
             expect(request).to.deep.equal {
               metadata:
-                jobType: 'DeliverSubscriptionMessageReceived'
+                jobType: 'DeliverSubscriptionMessageSent'
                 auth:
                   uuid: 'emitter-uuid'
                 fromUuid: 'emitter-uuid'
