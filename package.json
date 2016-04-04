@@ -1,6 +1,6 @@
 {
   "name": "meshblu-core-task-enqueue-jobs-for-subscriptions-message-sent",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Meshblu core task meshblu-core-task-enqueue-jobs-for-subscriptions-message-sent",
   "keywords": [
     "meshblu",

@@ -88,8 +88,8 @@ describe 'EnqueueJobsForSubscriptionsMessageSent', ->
               metadata:
                 jobType: 'DeliverSubscriptionMessageSent'
                 auth:
-                  uuid: 'emitter-uuid'
-                fromUuid: 'emitter-uuid'
+                  uuid: 'subscriber-uuid'
+                fromUuid: 'subscriber-uuid'
                 toUuid: 'subscriber-uuid'
                 messageRoute: [
                  {
@@ -134,8 +134,8 @@ describe 'EnqueueJobsForSubscriptionsMessageSent', ->
               metadata:
                 jobType: 'DeliverSubscriptionMessageSent'
                 auth:
-                  uuid: 'emitter-uuid'
-                fromUuid: 'emitter-uuid'
+                  uuid: 'subscriber-uuid'
+                fromUuid: 'subscriber-uuid'
                 toUuid: 'subscriber-uuid'
                 messageRoute: [
                   {

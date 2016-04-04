@@ -40,8 +40,8 @@ class EnqueueJobsForSubscriptionsMessageSent
       metadata:
         jobType: 'DeliverSubscriptionMessageSent'
         auth:
-          uuid: subscription.emitterUuid
-        fromUuid: subscription.emitterUuid
+          uuid: subscription.subscriberUuid
+        fromUuid: subscription.subscriberUuid
         toUuid: subscription.subscriberUuid
         messageRoute: messageRoute
       rawData: request.rawData
