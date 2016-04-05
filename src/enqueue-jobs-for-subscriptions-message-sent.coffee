@@ -29,21 +29,18 @@ class EnqueueJobsForSubscriptionsMessageSent
         return @_doCallback request, 204, callback
 
   _buildRequest: ({request, subscription}) =>
-    hop  =
-      fromUuid: subscription.emitterUuid
-      toUuid: subscription.subscriberUuid
-      type: 'message.received'
-
-    messageRoute = _.compact [hop].concat request.metadata.messageRoute
-
     return {
       metadata:
         jobType: 'DeliverSubscriptionMessageSent'
         auth:
           uuid: subscription.subscriberUuid
-        fromUuid: subscription.subscriberUuid
+        fromUuid: subscription.emitterUuid
         toUuid: subscription.subscriberUuid
-        messageRoute: messageRoute
+        messageRoute: [{
+          fromUuid: subscription.emitterUuid
+          toUuid: subscription.subscriberUuid
+          type: 'message.sent'
+        }]
       rawData: request.rawData
     }
 

@@ -89,66 +89,15 @@ describe 'EnqueueJobsForSubscriptionsMessageSent', ->
                 jobType: 'DeliverSubscriptionMessageSent'
                 auth:
                   uuid: 'subscriber-uuid'
-                fromUuid: 'subscriber-uuid'
+                fromUuid: 'emitter-uuid'
                 toUuid: 'subscriber-uuid'
                 messageRoute: [
                  {
                    fromUuid: "emitter-uuid"
                    toUuid: "subscriber-uuid"
-                   type: "message.received"
+                   type: "message.sent"
                  }
                ]
-              rawData: '{"original":"message"}'
-            }
-            done()
-
-      context 'when given a message with a previous hop in the messageRoute', ->
-        beforeEach (done) ->
-          request =
-            metadata:
-              responseId: 'its-electric'
-              fromUuid: 'emitter-uuid'
-              options: {}
-              messageRoute: [{
-                fromUuid: 'original-uuid'
-                toUuid: 'emitter-uuid'
-                type: 'message.received'
-              }]
-            rawData: '{"original":"message"}'
-
-          @sut.do request, (error, @response) => done error
-
-        it 'should return a 204', ->
-          expectedResponse =
-            metadata:
-              responseId: 'its-electric'
-              code: 204
-              status: 'No Content'
-
-          expect(@response).to.deep.equal expectedResponse
-
-        it 'should enqueue a job to deliver the message with the hop prepended', (done) ->
-          @jobManager.getRequest ['request'], (error, request) =>
-            return done error if error?
-            expect(request).to.deep.equal {
-              metadata:
-                jobType: 'DeliverSubscriptionMessageSent'
-                auth:
-                  uuid: 'subscriber-uuid'
-                fromUuid: 'subscriber-uuid'
-                toUuid: 'subscriber-uuid'
-                messageRoute: [
-                  {
-                    fromUuid: "emitter-uuid"
-                    toUuid: "subscriber-uuid"
-                    type: "message.received"
-                  },
-                  {
-                    fromUuid: 'original-uuid'
-                    toUuid: 'emitter-uuid'
-                    type: 'message.received'
-                  }
-                ]
               rawData: '{"original":"message"}'
             }
             done()
