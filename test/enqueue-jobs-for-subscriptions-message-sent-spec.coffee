@@ -84,6 +84,7 @@ describe 'EnqueueJobsForSubscriptionsMessageSent', ->
         it 'should enqueue a job to deliver the message', (done) ->
           @jobManager.getRequest ['request'], (error, request) =>
             return done error if error?
+            delete request.metadata.responseId
             expect(request).to.deep.equal {
               metadata:
                 jobType: 'DeliverSubscriptionMessageSent'
@@ -91,7 +92,7 @@ describe 'EnqueueJobsForSubscriptionsMessageSent', ->
                   uuid: 'subscriber-uuid'
                 fromUuid: 'emitter-uuid'
                 toUuid: 'subscriber-uuid'
-                messageRoute: [
+                route: [
                  {
                    fromUuid: "emitter-uuid"
                    toUuid: "subscriber-uuid"
