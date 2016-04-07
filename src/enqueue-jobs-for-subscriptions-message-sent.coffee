@@ -37,8 +37,8 @@ class EnqueueJobsForSubscriptionsMessageSent
         fromUuid: subscription.emitterUuid
         toUuid: subscription.subscriberUuid
         route: [{
-          fromUuid: subscription.emitterUuid
-          toUuid: subscription.subscriberUuid
+          from: subscription.emitterUuid
+          to: subscription.subscriberUuid
           type: 'message.sent'
         }]
       rawData: request.rawData
