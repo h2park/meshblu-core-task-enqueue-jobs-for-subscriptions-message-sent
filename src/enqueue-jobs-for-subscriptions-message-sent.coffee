@@ -41,6 +41,7 @@ class EnqueueJobsForSubscriptionsMessageSent
           to: subscription.subscriberUuid
           type: 'message.sent'
         }]
+        forwardedRoutes: request.metadata?.forwardedRoutes
       rawData: request.rawData
     }
 
